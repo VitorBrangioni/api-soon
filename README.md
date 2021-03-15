@@ -88,3 +88,32 @@ Create a new subscriber
     201: success
     400: Invalid payload
     500: Interval error
+
+----
+
+### GET: /api/plan
+
+Get all plans
+
+*RESPONSE:*
+```json
+[
+    {
+        "name": "Plan A",
+        "id": "43274268472368472"
+    },
+    {
+        "name": "Plan B",
+        "id": "47237847238472343"
+    },
+    {
+        "name": "Plan C",
+        "id": "31231231231212315"
+    }
+]
+```
+
+*http status:*
+
+    200: success
+    500: Interval error
