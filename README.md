@@ -1,81 +1,90 @@
-# ufrilla-api
-API para provas de estágio da ufrilla.
+# api-soon
+API para provas do processo seletivo da Soon.
+
+### Requirements
+
+- Docker
+- Docker Compose
 
 ### How run
 
 1) Install `docker` and `docker-compose`;
 2) run code `docker-compose build`;
-3) run code `docker-compose up web`.
+3) run code `docker-compose up soon`.
 
 Api is listening in port 3000. (http://localhost:3000)
 
 ---
 
-### GET: /api/freelancer-type
+### Auth
 
-Find all freelancers type
+No Auth
 
-*RESPONSE:*
-```json
-[
-    {
-        "id": 1,
-        "type": "garcom",
-        "created_at": "2019-01-01T11:00:00.000Z",
-        "updated_at": "2019-01-01T11:00:00.000Z"
-    }
-]
-```
+### GET: /api/subscriber
 
-### GET: /api/job
-
-Find all jobs
+Find all subscribers
 
 *RESPONSE:*
 ```json
 [
     {
-        "id": 2,
-        "quantity": 5,
-        "value": 100,
-        "description": "alo",
-        "job_start": "2019-01-01T11:00:00.000Z",
-        "job_end": "2019-01-01T11:00:00.000Z",
-        "freelancer_type_id": 1,
-        "created_at": "2019-01-01T11:00:00.000Z",
-        "updated_at": "2019-01-01T11:00:00.000Z"
+        "customer": {
+            "name": "joao",
+            "phone": "313333-3333",
+            "cpf": "313333-3333",
+            "email": "joao@gmail.com"
+        },
+        "vehicle": {
+            "description": "fiat uno",
+            "plate": "xxx-3333",
+            "year": 2020,
+            "warranty_date": "2020-01-15T00:00:00.000Z"
+        },
+        "plan": {
+            "product": "312312312312",
+            "begin_date": "2020-01-15",
+            "end_date": "2021-01-15"
+        }
     }
 ]
 ```
 
+*http status:*
 
-### POST: /api/job
+    200: success
+    500: Interval error
 
-Create a new job
+----
 
-*Body:*
-```json
-{
-    "quantity": 3,
-    "value": 100,
-    "description": "description",
-    "job_start": "2019-01-01T11:00:00.000Z",
-    "job_end": "2019-01-01T11:00:00.000Z",
-    "freelancer_type_id": 1
-}
-```
+### POST: /api/subscriber
 
-### PUT: /api/job
-
-Update a job
+Create a new subscriber
 
 *Body:*
 ```json
 {
-	"id": 3,
-    "quantity": 5,
-    "value": 120
+	"customer": {
+		"name": "joao",
+		"phone": "313333-3333",
+		"cpf": "131131313",
+		"email": "joao@gmail.com"
+	},
+	"vehicle": {
+		"description": "fiat uno",
+		"plate": "xxx-3333",
+		"year": 2020,
+		"warranty_date": "2020-01-15"
+	},
+	"plan": {
+		"product": "312312312312",
+		"begin_date": "2020-01-15",
+		"end_date": "2021-01-15"
+	}
 }
 ```
 
-**import collection: ** `https://www.getpostman.com/collections/00fb6c3ffaacc0ac1789`
+*http status:*
+
+    201: success
+    400: Invalid payload
+    500: Interval error
